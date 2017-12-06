@@ -4,7 +4,9 @@
   "description": "Powerful promise utilities for any JS environment",
   "main": "dist/index.js",
   "scripts": {
-    "build": "tsc"
+    "build": "tsc",
+    "clean": "trash ./dist/",
+    "prepare": "npm-run-all clean build"
   },
   "repository": {
     "type": "git",
@@ -22,6 +24,8 @@
   },
   "homepage": "https://github.com/AndyBarron/promiso#readme",
   "devDependencies": {
+    "npm-run-all": "4.1.2",
+    "trash-cli": "1.4.0",
     "typescript": "2.6.2"
   }
 }

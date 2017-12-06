@@ -9,7 +9,7 @@
     "declaration": true,
     "sourceMap": true,
     "outDir": "./dist/",
-    "rootDir": "./lib/",
+    "rootDir": "./src/",
     "removeComments": true,
     "downlevelIteration": true,
     "strict": true,
