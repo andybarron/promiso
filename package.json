@@ -2,9 +2,9 @@
   "name": "promiso",
   "version": "0.1.0",
   "description": "Powerful promise utilities for any JS environment",
-  "main": "index.js",
+  "main": "dist/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "tsc"
   },
   "repository": {
     "type": "git",
@@ -20,5 +20,8 @@
   "bugs": {
     "url": "https://github.com/AndyBarron/promiso/issues"
   },
-  "homepage": "https://github.com/AndyBarron/promiso#readme"
+  "homepage": "https://github.com/AndyBarron/promiso#readme",
+  "devDependencies": {
+    "typescript": "2.6.2"
+  }
 }
