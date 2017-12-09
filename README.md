@@ -10,6 +10,14 @@
 * ES6-compatible `Promise` defined globally (try
   [es6-promise polyfill][promise-polyfill])
 
+## Use
+```js
+const promiso = require('promiso');
+
+// You can also import individual methods.
+const parallelLimit = require('promiso/lib/parallelLimit');
+```
+
 ## Currently supported methods
 
 **Actual docs coming soon :-)**

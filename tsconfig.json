@@ -8,7 +8,7 @@
     "module": "commonjs",
     "declaration": true,
     "sourceMap": true,
-    "outDir": "./dist/",
+    "outDir": "./lib/",
     "rootDir": "./src/",
     "removeComments": true,
     "downlevelIteration": true,
@@ -17,5 +17,6 @@
     "noUnusedParameters": true,
     "noImplicitReturns": true,
     "noFallthroughCasesInSwitch": true,
+    "importHelpers": true
   }
 }
