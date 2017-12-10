@@ -1,6 +1,6 @@
 {
   "name": "promiso",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Powerful promise utilities for any JS environment",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
