@@ -1,9 +1,7 @@
 language: node_js
 
+# Earlier versions of node should work, but they can't run the tests due to async functions, etc.
 node_js:
-  - "4"
-  - "5"
-  - "6"
   - "7"
   - "8"
   - "node"

@@ -4,8 +4,8 @@
 
 [![NPM version](https://img.shields.io/npm/v/promiso.svg)](https://www.npmjs.com/package/promiso)
 [![NPM downloads](https://img.shields.io/npm/dt/promiso.svg)](https://www.npmjs.com/package/promiso)
-[![Build status](build-badge)](build-link)
-[![Coverage status](coverage-badge)](coverage-link)
+[![Build status][build-badge]][build-link]
+[![Coverage status][coverage-badge]][coverage-link]
 
 ## Installation
 `npm i promiso`
