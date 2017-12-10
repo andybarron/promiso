@@ -6,13 +6,13 @@
   "types": "lib/index.d.ts",
   "scripts": {
     "build": "tsc",
-    "clean": "trash ./lib/",
+    "clean": "trash ./lib/ ./coverage/",
     "lint": "tslint --project tsconfig.json",
     "fix": "tslint --project tsconfig.json --fix",
     "test": "jest",
     "coverage:open": "opener ./coverage/lcov-report/index.html",
     "coverage": "npm-run-all test coverage:open",
-    "prepare": "npm-run-all lint clean build"
+    "prepare": "npm-run-all lint test clean build"
   },
   "repository": {
     "type": "git",
