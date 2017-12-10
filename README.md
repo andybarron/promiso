@@ -72,10 +72,10 @@ const parallelLimit = require('promiso/lib/parallelLimit');
 **Actual docs coming soon :-)**
 
 *See [caolan/async docs](https://caolan.github.io/async/docs.html), but an "async function" in
-Promiso is a function that returns a promise (including
-[ES2017's true async functions][async-function]), rather than a function that accepts a callback.
-The library functions themselves do not accept callbacks; they instead return promises that
-resolve or reject accordingly.*
+Promiso is any function that always returns a promise (including
+[ES2017's true async functions][async-function] and any transpiled equivalents), rather than a
+function that accepts a callback. The library functions themselves do not accept callbacks; they
+instead return promises that resolve or reject accordingly.*
 
 * [`map`](https://caolan.github.io/async/docs.html#map)
 * [`mapLimit`](https://caolan.github.io/async/docs.html#mapLimit)
