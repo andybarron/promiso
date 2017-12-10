@@ -1,4 +1,4 @@
-import { AsyncFunction } from './types';
+import { AsyncSupplier } from './types';
 
 const startThread = async <T> (taskConfigs: Array<TaskConfig<T>>,
                                results: Array<T>, handle: CancelHandle) => {
@@ -9,10 +9,10 @@ const startThread = async <T> (taskConfigs: Array<TaskConfig<T>>,
   }
 };
 
-export = <T>(tasks: Array<AsyncFunction<T>>, limit = Infinity): Promise<Array<T>> => {
+export = <T>(tasks: Array<AsyncSupplier<T>>, limit = Infinity): Promise<Array<T>> => {
   const numThreads = Math.max(1, Math.min(tasks.length, limit));
   const handle: CancelHandle = {};
-  const configs = tasks.map((task, index) => ({task, index}));
+  const configs = tasks.map((task, index) => ({task, index})).reverse(); // threads run in reverse
   const results: Array<T> = [];
   const threadPromises: Array<Promise<void>> = [];
   for (let i = 0; i < numThreads; i++) {
@@ -32,5 +32,5 @@ interface CancelHandle {
 
 interface TaskConfig<T> {
   index: number;
-  task: AsyncFunction<T>;
+  task: AsyncSupplier<T>;
 }

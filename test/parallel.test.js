@@ -1,5 +1,5 @@
 const parallel = require('../src/parallel');
-const { createSleepTasks, createSleepTasksAndStats, sleep } = require('./utils');
+const { createSleepTasks, createSleepTasksAndStats } = require('./utils');
 
 it('should run all tasks at once', async () => {
   const { stats, tasks } = createSleepTasksAndStats(25);
