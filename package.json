@@ -9,6 +9,9 @@
     "clean": "trash ./lib/",
     "lint": "tslint --project tsconfig.json",
     "fix": "tslint --project tsconfig.json --fix",
+    "test": "jest",
+    "coverage:open": "opener ./coverage/lcov-report/index.html",
+    "coverage": "npm-run-all test coverage:open",
     "prepare": "npm-run-all lint clean build"
   },
   "repository": {
@@ -27,8 +30,11 @@
   },
   "homepage": "https://github.com/AndyBarron/promiso#readme",
   "devDependencies": {
+    "jest": "21.2.1",
     "npm-run-all": "4.1.2",
+    "opener": "1.4.3",
     "trash-cli": "1.4.0",
+    "ts-jest": "21.2.4",
     "tslint": "5.8.0",
     "typescript": "2.6.2"
   },
