@@ -12,7 +12,7 @@ const startThread = async <T> (taskConfigs: Array<TaskConfig<T>>,
 export = <T>(tasks: Array<AsyncSupplier<T>>, limit = Infinity): Promise<Array<T>> => {
   const numThreads = Math.max(1, Math.min(tasks.length, limit));
   const handle: CancelHandle = {};
-  const configs = tasks.map((task, index) => ({task, index})).reverse(); // threads run in reverse
+  const configs = tasks.map((task, index) => ({task, index})).reverse(); // Threads run in reverse
   const results: Array<T> = [];
   const threadPromises: Array<Promise<void>> = [];
   for (let i = 0; i < numThreads; i++) {
