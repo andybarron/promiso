@@ -2,6 +2,9 @@
 
 *Powerful promise utilities for any JS environment*
 
+[![npm version](https://img.shields.io/npm/v/promiso.svg)](https://www.npmjs.com/package/promiso)
+[![npm downloads](https://img.shields.io/npm/dt/promiso.svg)](https://www.npmjs.com/package/promiso)
+
 ## Installation
 `npm i promiso`
 
