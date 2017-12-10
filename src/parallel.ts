@@ -1,6 +1,4 @@
 import parallelLimit = require('./parallelLimit');
 import { AsyncFunction } from './types';
 
-export = <T>(tasks: AsyncFunction<T>[]): Promise<T[]> => {
-  return parallelLimit(tasks, Infinity);
-};
+export = <T>(tasks: Array<AsyncFunction<T>>) => parallelLimit(tasks, Infinity);

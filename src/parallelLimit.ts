@@ -1,11 +1,20 @@
 import { AsyncFunction } from './types';
 
-export = <T>(tasks: AsyncFunction<T>[], limit: number = Infinity): Promise<T[]> => {
+const startThread = async <T> (taskConfigs: Array<TaskConfig<T>>,
+                               results: Array<T>, handle: CancelHandle) => {
+  while (taskConfigs.length && !handle.canceled) {
+    const {task, index} = taskConfigs.pop() as TaskConfig<T>;
+    const result = await task();
+    results[index] = result;
+  }
+};
+
+export = <T>(tasks: Array<AsyncFunction<T>>, limit = Infinity): Promise<Array<T>> => {
   const numThreads = Math.max(1, Math.min(tasks.length, limit));
   const handle: CancelHandle = {};
   const configs = tasks.map((task, index) => ({task, index}));
-  const results: T[] = [];
-  const threadPromises: Promise<void>[] = [];
+  const results: Array<T> = [];
+  const threadPromises: Array<Promise<void>> = [];
   for (let i = 0; i < numThreads; i++) {
     threadPromises.push(startThread(configs, results, handle));
   }
@@ -18,18 +27,10 @@ export = <T>(tasks: AsyncFunction<T>[], limit: number = Infinity): Promise<T[]> 
 };
 
 interface CancelHandle {
-  canceled?: boolean,
+  canceled?: boolean;
 }
 
 interface TaskConfig<T> {
-  task: AsyncFunction<T>,
-  index: number,
+  index: number;
+  task: AsyncFunction<T>;
 }
-
-const startThread = async <T> (taskConfigs: TaskConfig<T>[], results: T[], handle: CancelHandle) => {
-  while (taskConfigs.length && !handle.canceled) {
-    const {task, index} = taskConfigs.pop() as TaskConfig<T>;
-    const result = await task();
-    results[index] = result;
-  }
-};
