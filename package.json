@@ -30,6 +30,7 @@
   },
   "homepage": "https://github.com/AndyBarron/promiso#readme",
   "devDependencies": {
+    "coveralls": "3.0.0",
     "jest": "21.2.1",
     "npm-run-all": "4.1.2",
     "opener": "1.4.3",
