@@ -12,7 +12,8 @@
     "test": "jest",
     "coverage:open": "opener ./coverage/lcov-report/index.html",
     "coverage": "npm-run-all test coverage:open",
-    "prepare": "npm-run-all lint test clean build"
+    "prepare": "npm-run-all clean build",
+    "prepublishOnly": "npm-run-all lint test",
   },
   "repository": {
     "type": "git",

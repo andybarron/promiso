@@ -6,6 +6,10 @@ node_js:
   - "8"
   - "node"
   - "lts/*"
-  
+
+script:
+  - npm run lint
+  - npm test
+
 after_success:
-  - 'cat ./coverage/lcov.info ./node_modules/.bin/coveralls'
+  - npm run coveralls
