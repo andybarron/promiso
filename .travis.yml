@@ -2,14 +2,14 @@ language: node_js
 
 # Earlier versions of node should work, but they can't run the tests due to async functions, etc.
 node_js:
-  - "7"
-  - "8"
-  - "node"
   - "lts/*"
+  - "node"
+  - "8"
+  - "7"
 
 script:
   - npm run lint
   - npm test
 
 after_success:
-  - npm run coveralls
+  - cat ./coverage/lcov.info | ./node_modules/.bin/coveralls
