@@ -8,7 +8,7 @@ it('should limit max running tasks', async () => {
   expect(stats.maxActive).toBe(limit);
 });
 
-test.only('should default to no limit', async () => {
+it('should default to no limit', async () => {
   const { stats, tasks } = createTasksAndStats(25);
   await parallelLimit(tasks);
   expect(stats.maxActive).toBe(tasks.length);
