@@ -1,7 +1,5 @@
 
-const sleep = (seconds) => new Promise((resolve) => setTimeout(resolve, seconds * 1000));
-
-const createSleepItemsAndStats = (count, duration = 0.01) => {
+const createMapArgsAndStats = (count, duration = 0.01) => {
   const stats = {
     active: 0,
     maxActive: 0,
@@ -9,7 +7,7 @@ const createSleepItemsAndStats = (count, duration = 0.01) => {
   const f = async (item) => {
     stats.active++;
     stats.maxActive = Math.max(stats.active, stats.maxActive);
-    await sleep(duration);
+    await Promise.resolve();
     stats.active--;
     return item;
   };
@@ -20,7 +18,7 @@ const createSleepItemsAndStats = (count, duration = 0.01) => {
   return { f, items, stats };
 };
 
-const createSleepTasksAndStats = (count, duration = 0.01) => {
+const createTasksAndStats = (count, duration = 0.01) => {
   const stats = {
     active: 0,
     maxActive: 0,
@@ -30,7 +28,7 @@ const createSleepTasksAndStats = (count, duration = 0.01) => {
     tasks.push(async () => {
       stats.active++;
       stats.maxActive = Math.max(stats.active, stats.maxActive);
-      await sleep(duration);
+      await Promise.resolve();
       stats.active--;
       return i;
     });
@@ -38,14 +36,13 @@ const createSleepTasksAndStats = (count, duration = 0.01) => {
   return { stats, tasks };
 };
 
-const createSleepTasks = (count, duration) => {
-  const { tasks } = createSleepTasksAndStats(count, duration);
+const createTasks = (count, duration) => {
+  const { tasks } = createTasksAndStats(count, duration);
   return tasks;
 };
 
 module.exports = {
-  createSleepItemsAndStats,
-  createSleepTasks,
-  createSleepTasksAndStats,
-  sleep,
+  createMapArgsAndStats,
+  createTasks,
+  createTasksAndStats,
 };

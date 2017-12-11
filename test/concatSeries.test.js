@@ -1,8 +1,8 @@
 const concatSeries = require('../src/concatSeries');
-const { createSleepItemsAndStats } = require('./utils');
+const { createMapArgsAndStats } = require('./utils');
 
 it('should map one item at a time', async () => {
-  const { f, items, stats } = createSleepItemsAndStats(10);
+  const { f, items, stats } = createMapArgsAndStats(10);
   await concatSeries(items, f);
   expect(stats.maxActive).toBe(1);
 });

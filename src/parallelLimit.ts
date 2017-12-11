@@ -4,6 +4,7 @@ const startThread = async <T> (taskConfigs: Array<TaskConfig<T>>,
                                results: Array<T>, handle: CancelHandle) => {
   while (taskConfigs.length && !handle.canceled) {
     const {task, index} = taskConfigs.pop() as TaskConfig<T>;
+    await Promise.resolve(); // Ensure tasks start asynchronously
     const result = await task();
     results[index] = result;
   }

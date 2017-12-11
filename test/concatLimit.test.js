@@ -1,9 +1,9 @@
 const concatLimit = require('../src/concatLimit');
-const { createSleepItemsAndStats } = require('./utils');
+const { createMapArgsAndStats } = require('./utils');
 
 it('should limit max mapping items', async () => {
   const limit = 2;
-  const { f, items, stats } = createSleepItemsAndStats(10);
+  const { f, items, stats } = createMapArgsAndStats(10);
   await concatLimit(items, limit, f);
   expect(stats.maxActive).toBe(limit);
 });

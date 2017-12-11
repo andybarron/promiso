@@ -1,14 +1,14 @@
 const series = require('../src/series');
-const { createSleepTasks, createSleepTasksAndStats, sleep } = require('./utils');
+const { createTasks, createTasksAndStats } = require('./utils');
 
 it('should run one task at a time', async () => {
-  const { stats, tasks } = createSleepTasksAndStats(10);
+  const { stats, tasks } = createTasksAndStats(10);
   await series(tasks);
   expect(stats.maxActive).toBe(1);
 });
 
 it('should return results in order', async () => {
-  const tasks = createSleepTasks(3);
+  const tasks = createTasks(3);
   const result = await series(tasks);
   expect(result).toEqual([0, 1, 2]);
 });
@@ -19,7 +19,7 @@ it('should call tasks in order', async () => {
   const tasks = [];
   for (let i = 0; i < 5; i++) {
     tasks.push(async () => {
-      await sleep(0.01);
+      await Promise.resolve();
       canary(i);
       return i;
     });
