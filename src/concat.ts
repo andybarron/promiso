@@ -1,6 +1,6 @@
-import concatLimit = require('./concatLimit');
+import concatLimit from './concatLimit';
 import { AsyncFunction, Collection } from './types';
 
-export = <A, B> (items: Collection<A>, f: AsyncFunction<A, Array<B>>): Promise<Array<B>> => {
+export default <A, B> (items: Collection<A>, f: AsyncFunction<A, Array<B>>): Promise<Array<B>> => {
   return concatLimit(items, Infinity, f);
 };

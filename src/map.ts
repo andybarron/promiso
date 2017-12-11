@@ -1,4 +1,4 @@
-import mapLimit = require('./mapLimit');
+import mapLimit from './mapLimit';
 import { AsyncFunction, Collection } from './types';
 
-export = <A, B>(items: Collection<A>, f: AsyncFunction<A, B>) => mapLimit(items, Infinity, f);
+export default <A, B>(items: Collection<A>, f: AsyncFunction<A, B>) => mapLimit(items, Infinity, f);

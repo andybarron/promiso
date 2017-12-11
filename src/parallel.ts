@@ -1,4 +1,4 @@
-import parallelLimit = require('./parallelLimit');
+import parallelLimit from './parallelLimit';
 import { AsyncSupplier } from './types';
 
-export = <T>(tasks: Array<AsyncSupplier<T>>) => parallelLimit(tasks, Infinity);
+export default <T>(tasks: Array<AsyncSupplier<T>>) => parallelLimit(tasks, Infinity);

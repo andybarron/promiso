@@ -1,4 +1,4 @@
-const series = require('../src/series');
+const series = require('../src/series').default;
 const { createTasks, createTasksAndStats } = require('./utils');
 
 it('should run one task at a time', async () => {

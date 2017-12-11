@@ -1,4 +1,4 @@
-const mapSeries = require('../src/mapSeries');
+const mapSeries = require('../src/mapSeries').default;
 const { createMapArgsAndStats } = require('./utils');
 
 it('should map one item at a time', async () => {

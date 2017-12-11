@@ -61,11 +61,10 @@ const main = async () => {
 main();
 ```
 
-### Individual functions
-You can also import individual functions for smaller bundles.
-```js
-const parallelLimit = require('promiso/lib/parallelLimit');
-```
+### With TypeScript
+
+Promiso is transpiled from TypeScript with type definitions, so it should work out of the box with
+TypeScript :-)
 
 ## API
 

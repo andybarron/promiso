@@ -1,4 +1,4 @@
-const mapLimit = require('../src/mapLimit');
+const mapLimit = require('../src/mapLimit').default;
 const { createMapArgsAndStats } = require('./utils');
 
 it('should limit max mapping items', async () => {

@@ -1,4 +1,4 @@
-const map = require('../src/map');
+const map = require('../src/map').default;
 const { createMapArgsAndStats } = require('./utils');
 
 it('should map all items at once', async () => {

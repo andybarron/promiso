@@ -1,4 +1,4 @@
-const parallelLimit = require('../src/parallelLimit');
+const parallelLimit = require('../src/parallelLimit').default;
 const { createTasks, createTasksAndStats } = require('./utils');
 
 it('should limit max running tasks', async () => {

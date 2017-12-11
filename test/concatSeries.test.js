@@ -1,4 +1,4 @@
-const concatSeries = require('../src/concatSeries');
+const concatSeries = require('../src/concatSeries').default;
 const { createMapArgsAndStats } = require('./utils');
 
 it('should map one item at a time', async () => {

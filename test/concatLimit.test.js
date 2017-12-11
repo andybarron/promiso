@@ -1,4 +1,4 @@
-const concatLimit = require('../src/concatLimit');
+const concatLimit = require('../src/concatLimit').default;
 const { createMapArgsAndStats } = require('./utils');
 
 it('should limit max mapping items', async () => {

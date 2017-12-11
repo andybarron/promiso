@@ -2,11 +2,16 @@
   "name": "promiso",
   "version": "0.3.0",
   "description": "Powerful promise utilities for any JS environment",
-  "main": "lib/index.js",
-  "types": "lib/index.d.ts",
+  "main": "dist/promiso.js",
+  "module": "dist/promiso.mjs",
+  "types": "dist/index.d.ts",
   "scripts": {
-    "build": "tsc",
-    "clean": "trash ./lib/ ./coverage/",
+    "build": "npm-run-all build:es6 build:es6-min build:umd build:umd-min",
+    "build:es6": "rollup -c rollup.es6.mjs",
+    "build:es6-min": "rollup -c rollup.es6-min.mjs",
+    "build:umd": "rollup -c rollup.umd.mjs",
+    "build:umd-min": "rollup -c rollup.umd-min.mjs",
+    "clean": "trash ./dist/ ./coverage/ ./.rpt2_cache",
     "lint": "tslint --project tsconfig.json",
     "fix": "tslint --project tsconfig.json --fix",
     "test": "jest",
@@ -31,16 +36,16 @@
   },
   "homepage": "https://github.com/AndyBarron/promiso#readme",
   "devDependencies": {
-    "coveralls": "^3.0.0",
-    "jest": "^21.2.1",
-    "npm-run-all": "^4.1.2",
-    "opener": "^1.4.3",
-    "trash-cli": "^1.4.0",
-    "ts-jest": "^21.2.4",
-    "tslint": "^5.8.0",
-    "typescript": "^2.6.2"
-  },
-  "dependencies": {
-    "tslib": "^1.8.1"
+    "coveralls": "3.0.0",
+    "jest": "21.2.1",
+    "npm-run-all": "4.1.2",
+    "opener": "1.4.3",
+    "rollup": "0.52.1",
+    "rollup-plugin-typescript2": "0.8.4",
+    "rollup-plugin-uglify-es": "0.0.1",
+    "trash-cli": "1.4.0",
+    "ts-jest": "21.2.4",
+    "tslint": "5.8.0",
+    "typescript": "2.6.2"
   }
 }

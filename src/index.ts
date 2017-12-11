@@ -1,22 +1,10 @@
 
-import concat = require('./concat');
-import concatLimit = require('./concatLimit');
-import concatSeries = require('./concatSeries');
-import map = require('./map');
-import mapLimit = require('./mapLimit');
-import mapSeries = require('./mapSeries');
-import parallel = require('./parallel');
-import parallelLimit = require('./parallelLimit');
-import series = require('./series');
-
-export = {
-  concat,
-  concatLimit,
-  concatSeries,
-  map,
-  mapLimit,
-  mapSeries,
-  parallel,
-  parallelLimit,
-  series,
-};
+export { default as concat } from './concat';
+export { default as concatLimit } from './concatLimit';
+export { default as concatSeries } from './concatSeries';
+export { default as map } from './map';
+export { default as mapLimit } from './mapLimit';
+export { default as mapSeries } from './mapSeries';
+export { default as parallel } from './parallel';
+export { default as parallelLimit } from './parallelLimit';
+export { default as series } from './series';
