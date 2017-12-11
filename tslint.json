@@ -8,6 +8,7 @@
     "interface-name": [true, "never-prefix"],
     "max-line-length": [true, 100],
     "newline-before-return": false,
+    "no-default-export": false,
     "no-require-imports": false,
     "promise-function-async": false,
     "quotemark": [true, "single", "avoid-escape"],
