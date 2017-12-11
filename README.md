@@ -76,8 +76,10 @@ Promiso offers these improvements:
 * An "async function" in Promiso is any function that always returns a promise. This includes
   [ES2017's true async functions][async-function] - *even if they have been transpiled!*
 * Whenever Promiso expect an async function, you can instead use a synchronous function and obtain
-  the same result without any errors. (However, normal guarantees about concurrent executions may
-  not apply.)
+  the same result without any errors. Normal guarantees about concurrent executions will not apply,
+  since only one synchronous function can be running at a time.
+* You can even mix and match async and sync functions or use functions that only sometimes return
+  promises (with the same caveats mentioned above).
 * Promiso library functions do not accept callbacks. They instead return promises that resolve or
   reject accordingly.
 
