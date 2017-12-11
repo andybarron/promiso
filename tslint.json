@@ -4,6 +4,7 @@
   ],
   "rules": {
     "array-type": [true, "generic"],
+    "arrow-return-shorthand": false,
     "interface-name": [true, "never-prefix"],
     "max-line-length": [true, 100],
     "newline-before-return": false,

@@ -16,10 +16,14 @@ it('should return results in order', async () => {
 it('should call tasks in order', async () => {
   let counter = 0;
   const canary = jest.fn();
-  const tasks = Array(5).fill(async () => {
-    await sleep(0.01);
-    canary(counter++);
-  });
+  const tasks = [];
+  for (let i = 0; i < 5; i++) {
+    tasks.push(async () => {
+      await sleep(0.01);
+      canary(i);
+      return i;
+    });
+  }
   await series(tasks);
   expect(canary.mock.calls).toEqual([[0], [1], [2], [3], [4]]);
 });

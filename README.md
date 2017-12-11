@@ -1,6 +1,6 @@
 # Promiso
 
-*Powerful promise utilities for any JS environment*
+*Powerful promise utilities for any JS environment - because who uses callbacks in 2018?*
 
 [![NPM version](https://img.shields.io/npm/v/promiso.svg)](https://www.npmjs.com/package/promiso)
 [![NPM downloads](https://img.shields.io/npm/dt/promiso.svg)](https://www.npmjs.com/package/promiso)
@@ -15,7 +15,7 @@
 * ES6-compatible `Promise` defined globally (try
   [es6-promise polyfill][promise-polyfill])
 
-## Use
+## Usage
 
 ### Standard promises
 ```js
@@ -67,18 +67,30 @@ You can also import individual functions for smaller bundles.
 const parallelLimit = require('promiso/lib/parallelLimit');
 ```
 
-## Currently supported functions
+## API
 
 **Actual docs coming soon :-)**
 
-*See [caolan/async docs](https://caolan.github.io/async/docs.html), but an "async function" in
-Promiso is any function that always returns a promise (including
-[ES2017's true async functions][async-function] and any transpiled equivalents), rather than a
-function that accepts a callback. The library functions themselves do not accept callbacks; they
-instead return promises that resolve or reject accordingly.*
+See [the documentation][async-lib-docs] for the [original async library][async-lib-repo], but
+Promiso offers these improvements:
 
+* An "async function" in Promiso is any function that always returns a promise. This includes
+  [ES2017's true async functions][async-function] - *even if they have been transpiled!*
+* Whenever Promiso expect an async function, you can instead use a synchronous function and obtain
+  the same result without any errors. (However, normal guarantees about concurrent executions may
+  not apply.)
+* Promiso library functions do not accept callbacks. They instead return promises that resolve or
+  reject accordingly.
+
+The following functions are available (with support planned for every function available in
+[async][async-lib-repo]):
+
+* [`concat`](https://caolan.github.io/async/docs.html#concat)
+* [`concatLimit`](https://caolan.github.io/async/docs.html#concatLimit)
+* [`concatSeries`](https://caolan.github.io/async/docs.html#concatSeries)
 * [`map`](https://caolan.github.io/async/docs.html#map)
 * [`mapLimit`](https://caolan.github.io/async/docs.html#mapLimit)
+* [`mapSeries`](https://caolan.github.io/async/docs.html#mapSeries)
 * [`parallel`](https://caolan.github.io/async/docs.html#parallel)
 * [`parallelLimit`](https://caolan.github.io/async/docs.html#parallelLimit)
 * [`series`](https://caolan.github.io/async/docs.html#series)
@@ -89,3 +101,5 @@ instead return promises that resolve or reject accordingly.*
 [coverage-link]: https://coveralls.io/github/AndyBarron/promiso?branch=master
 [promise-polyfill]: https://github.com/stefanpenner/es6-promise#auto-polyfill
 [async-function]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/async_function
+[async-lib-docs]: https://caolan.github.io/async/docs.html
+[async-lib-repo]: https://github.com/caolan/async
