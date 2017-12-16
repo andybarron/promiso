@@ -4,7 +4,7 @@
   "description": "Powerful promise utilities for any JS environment",
   "main": "dist/promiso",
   "module": "dist/promiso.mjs",
-  "types": "dist/index.d.ts",
+  "types": "dist/promiso.d.ts",
   "scripts": {
     "build": "npm-run-all build:es6 build:es6-min build:umd build:umd-min build:types",
     "build:es6": "rollup -c rollup.es6.mjs",
