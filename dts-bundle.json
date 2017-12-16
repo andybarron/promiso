@@ -1,0 +1,8 @@
+{
+  "name": "promiso",
+  "baseDir": "./dist",
+  "main": "dist/index.d.ts",
+  "removeSource": true,
+  "out": "promiso.d.ts",
+  "indent": "  "
+}

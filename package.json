@@ -1,16 +1,17 @@
 {
   "name": "promiso",
-  "version": "0.4.1",
+  "version": "0.4.2",
   "description": "Powerful promise utilities for any JS environment",
   "main": "dist/promiso",
   "module": "dist/promiso.mjs",
   "types": "dist/index.d.ts",
   "scripts": {
-    "build": "npm-run-all build:es6 build:es6-min build:umd build:umd-min",
+    "build": "npm-run-all build:es6 build:es6-min build:umd build:umd-min build:types",
     "build:es6": "rollup -c rollup.es6.mjs",
     "build:es6-min": "rollup -c rollup.es6-min.mjs",
     "build:umd": "rollup -c rollup.umd.mjs",
     "build:umd-min": "rollup -c rollup.umd-min.mjs",
+    "build:types": "npx dts-bundle --configJson dts-bundle.json",
     "clean": "trash ./dist/ ./coverage/ ./.rpt2_cache",
     "lint": "tslint --project tsconfig.json",
     "fix": "tslint --project tsconfig.json --fix",
@@ -42,6 +43,7 @@
   "homepage": "https://github.com/AndyBarron/promiso",
   "devDependencies": {
     "coveralls": "3.0.0",
+    "dts-bundle": "0.7.3",
     "jest": "21.2.1",
     "npm-run-all": "4.1.2",
     "opener": "1.4.3",
