@@ -22,6 +22,7 @@ const createTasksAndStats = (count, duration = 0.01) => {
   const stats = {
     active: 0,
     maxActive: 0,
+    completed: 0,
   };
   const tasks = [];
   for (let i = 0; i < count; i++) {
@@ -30,6 +31,7 @@ const createTasksAndStats = (count, duration = 0.01) => {
       stats.maxActive = Math.max(stats.active, stats.maxActive);
       await Promise.resolve();
       stats.active--;
+      stats.completed++;
       return i;
     });
   }

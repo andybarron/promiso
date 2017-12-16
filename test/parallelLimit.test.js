@@ -26,4 +26,5 @@ it('should abort early if a task throws', async () => {
     throw new Error('expected');
   });
   await expect(parallelLimit(tasks, 3)).rejects.toBeDefined();
+  expect(stats.completed).toBeLessThan(tasks.length);
 });

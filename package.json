@@ -1,6 +1,6 @@
 {
   "name": "promiso",
-  "version": "0.4.0",
+  "version": "0.4.1",
   "description": "Powerful promise utilities for any JS environment",
   "main": "dist/promiso",
   "module": "dist/promiso.mjs",
@@ -26,15 +26,20 @@
   },
   "keywords": [
     "promise",
+    "promises",
+    "future",
+    "futures",
     "async",
-    "await"
+    "await",
+    "utility",
+    "flow control"
   ],
   "author": "Andy Barron <AndrewLBarron@gmail.com>",
   "license": "Unlicense",
   "bugs": {
     "url": "https://github.com/AndyBarron/promiso/issues"
   },
-  "homepage": "https://github.com/AndyBarron/promiso#readme",
+  "homepage": "https://github.com/AndyBarron/promiso",
   "devDependencies": {
     "coveralls": "3.0.0",
     "jest": "21.2.1",
