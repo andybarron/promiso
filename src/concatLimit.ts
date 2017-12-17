@@ -1,8 +1,9 @@
-import mapLimit from './mapLimit';
-import { AsyncFunction, Collection } from './types';
-import { flatten } from './utils';
+import { AsyncFunction, AsyncSupplier, Collection, MapCollection } from './types';
+import { flatten, map, mapParallelTasks } from './utils';
 
-export default <A, B> (items: Collection<A>, limit: number,
-                       f: AsyncFunction<A, Array<B>>): Promise<Array<B>> => {
-  return mapLimit(items, limit, f).then(flatten);
-};
+export default function<T, U>(items: Array<T>, limit: number, f: AsyncFunction<T, Array<U>>): Promise<Array<U>>
+export default function<T, U>(items: MapCollection<T>, limit: number, f: AsyncFunction<T, Array<U>>): Promise<MapCollection<U>>
+export default function<T, U>(items: Collection<T>, limit: number, f: AsyncFunction<T, Array<U>>): Promise<Collection<U>> {
+  const tasks: Collection<AsyncSupplier<Array<U>>> = map(items, (item) => () => f(item));
+  return mapParallelTasks(tasks, limit).then(flatten);
+}

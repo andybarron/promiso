@@ -1,9 +1,9 @@
-import parallelLimit from './parallelLimit';
-import { AsyncFunction, AsyncSupplier, Collection } from './types';
-import { mapCollection } from './utils';
+import { AsyncFunction, AsyncSupplier, Collection, MapCollection } from './types';
+import { map, mapParallelTasks } from './utils';
 
-export default <A, B> (items: Collection<A>, limit: number,
-                       f: AsyncFunction<A, B>): Promise<Array<B>> => {
-  const tasks: Array<AsyncSupplier<B>> = mapCollection(items, (item) => () => f(item));
-  return parallelLimit(tasks, limit);
-};
+export default function<T, U>(items: Array<T>, limit: number, f: AsyncFunction<T, U>): Promise<Array<U>>
+export default function<T, U>(items: MapCollection<T>, limit: number, f: AsyncFunction<T, U>): Promise<MapCollection<U>>
+export default function<T, U>(items: Collection<T>, limit: number, f: AsyncFunction<T, U>): Promise<Collection<U>> {
+  const tasks: Collection<AsyncSupplier<U>> = map(items, (item) => () => f(item));
+  return mapParallelTasks(tasks, limit);
+}

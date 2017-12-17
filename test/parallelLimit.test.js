@@ -8,12 +8,6 @@ it('should limit max running tasks', async () => {
   expect(stats.maxActive).toBe(limit);
 });
 
-it('should default to no limit', async () => {
-  const { stats, tasks } = createTasksAndStats(25);
-  await parallelLimit(tasks);
-  expect(stats.maxActive).toBe(tasks.length);
-});
-
 it('should return results in order', async () => {
   const tasks = createTasks(3);
   const result = await parallelLimit(tasks, 3);
