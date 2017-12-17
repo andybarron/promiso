@@ -1,4 +1,4 @@
-import { AsyncSupplier, Collection, MapCollection } from './types';
+import { AsyncSupplier, Collection, MapObject } from './types';
 
 const reduceMerge = <T> (accum: Array<T>, target: Array<T> | T): Array<T> => {
   if (Array.isArray(target)) {
@@ -9,28 +9,20 @@ const reduceMerge = <T> (accum: Array<T>, target: Array<T> | T): Array<T> => {
   return accum;
 };
 
-export function map<T, U>(collection: Collection<T>, f: (item: T, index: any) => U): Collection<U> {
+export const map = <T, U>(collection: Collection<T>,
+                          f: (item: T, index: any) => U): Collection<U> => {
   if (Array.isArray(collection)) {
     return collection.map((value, index, _) => f(value, index));
   } else {
-    const output: MapCollection<U> = {};
+    const output: MapObject<U> = {};
     for (const key in collection) {
-      if (!Object.prototype.hasOwnProperty.call(collection, key)) continue;
+      if (!Object.prototype.hasOwnProperty.call(collection, key)) { continue; }
       const value = collection[key];
       output[key] = f(value, key);
     }
     return output;
   }
-}
-
-export const cloneOwnPropertyNames = <T extends object>(o: T): { [K in keyof T]?: undefined } => {
-  const clone: { [K in keyof T]?: undefined } = {};
-  for (const key in o) {
-    if (!Object.prototype.hasOwnProperty.call(o, key)) continue;
-    clone[key] = undefined;
-  }
-  return clone;
-}
+};
 
 const getValues = <T>(collection: Collection<T>): Array<T> => {
   if (Array.isArray(collection)) {
@@ -38,14 +30,16 @@ const getValues = <T>(collection: Collection<T>): Array<T> => {
   } else {
     const values = [];
     for (const key in collection) {
-      if (!Object.prototype.hasOwnProperty.call(collection, key)) continue;
+      if (!Object.prototype.hasOwnProperty.call(collection, key)) { continue; }
       values.push(collection[key]);
     }
     return values;
   }
 };
 
-export const flatten = <T> (items: Collection<Array<T> | T>): Array<T> => getValues(items).reduce(reduceMerge, []);
+export const flatten = <T> (items: Collection<Array<T> | T>): Array<T> => {
+  return getValues(items).reduce(reduceMerge, []);
+};
 
 const startThread = (tasks: Array<AsyncSupplier<void>>,
                      handle: CancelHandle): Promise<void> => {
@@ -78,7 +72,8 @@ export const runParallelTasks = (originalTasks: Collection<AsyncSupplier<void>>,
     });
 };
 
-export function mapParallelTasks<T>(tasks: Collection<AsyncSupplier<T>>, limit: number): Promise<Collection<T>> {
+export const mapParallelTasks = <T>(tasks: Collection<AsyncSupplier<T>>,
+                                    limit: number): Promise<Collection<T>> => {
   let internalTasks;
   let output: Collection<T>;
   if (Array.isArray(tasks)) {
@@ -89,7 +84,7 @@ export function mapParallelTasks<T>(tasks: Collection<AsyncSupplier<T>>, limit: 
       });
     });
   } else {
-    const results: MapCollection<T> = output = {};
+    const results: MapObject<T> = output = {};
     internalTasks = map(tasks, (task, key) => () => {
       return Promise.resolve().then(task).then((result) => {
         results[key] = result;
@@ -97,7 +92,7 @@ export function mapParallelTasks<T>(tasks: Collection<AsyncSupplier<T>>, limit: 
     });
   }
   return runParallelTasks(internalTasks, limit).then(() => output);
-}
+};
 
 interface CancelHandle {
   canceled?: boolean;

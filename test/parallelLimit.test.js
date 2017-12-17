@@ -22,3 +22,14 @@ it('should abort early if a task throws', async () => {
   await expect(parallelLimit(tasks, 3)).rejects.toBeDefined();
   expect(stats.completed).toBeLessThan(tasks.length);
 });
+
+it('should work on objects', async () => {
+  const tasks = {};
+  createTasks(3).forEach((task, index) => tasks[index] = task);
+  const result = await parallelLimit(tasks);
+  expect(result).toEqual({
+    0: 0,
+    1: 1,
+    2: 2,
+  });
+});

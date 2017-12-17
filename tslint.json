@@ -10,6 +10,7 @@
     "newline-before-return": false,
     "no-default-export": false,
     "no-require-imports": false,
+    "only-arrow-functions": [true, "allow-declarations"],
     "promise-function-async": false,
     "quotemark": [true, "single", "avoid-escape"],
     "strict-boolean-expressions": false,
