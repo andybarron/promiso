@@ -26,7 +26,7 @@ it('should abort early if a task throws', async () => {
 it('should work on objects', async () => {
   const tasks = {};
   createTasks(3).forEach((task, index) => tasks[index] = task);
-  const result = await parallelLimit(tasks);
+  const result = await parallelLimit(tasks, 2);
   expect(result).toEqual({
     0: 0,
     1: 1,

@@ -10,6 +10,7 @@ const reduceMerge = <T> (accum: Array<T>, target: Array<T> | T): Array<T> => {
 };
 
 export const map = <T, U>(collection: Collection<T>,
+                          // tslint:disable-next-line:no-any
                           f: (item: T, index: any) => U): Collection<U> => {
   if (Array.isArray(collection)) {
     return collection.map((value, index, _) => f(value, index));

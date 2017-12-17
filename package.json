@@ -1,6 +1,6 @@
 {
   "name": "promiso",
-  "version": "0.4.2",
+  "version": "0.5.0",
   "description": "Powerful promise utilities for any JS environment",
   "main": "dist/promiso",
   "module": "dist/promiso.mjs",
