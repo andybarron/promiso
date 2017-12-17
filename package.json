@@ -1,6 +1,6 @@
 {
   "name": "promiso",
-  "version": "0.5.0",
+  "version": "0.5.1",
   "description": "Powerful promise utilities for any JS environment",
   "main": "dist/promiso",
   "module": "dist/promiso.mjs",
@@ -11,7 +11,7 @@
     "build:es6-min": "rollup -c rollup.es6-min.mjs",
     "build:umd": "rollup -c rollup.umd.mjs",
     "build:umd-min": "rollup -c rollup.umd-min.mjs",
-    "build:types": "npx dts-bundle --configJson dts-bundle.json",
+    "build:types": "dts-bundle --configJson dts-bundle.json",
     "clean": "trash ./dist/ ./coverage/ ./.rpt2_cache",
     "lint": "tslint --project tsconfig.json",
     "fix": "tslint --project tsconfig.json --fix",
